@@ -409,7 +409,7 @@ module Sunspot #:nodoc:
 
         def maybe_auto_index
           if @marked_for_auto_indexing
-            indexable? solr_index : solr_remove_from_index 
+            indexable? ? solr_index : solr_remove_from_index 
             remove_instance_variable(:@marked_for_auto_indexing)
           end
         end
