@@ -366,7 +366,7 @@ module Sunspot #:nodoc:
         # manually.
         #
         def solr_remove_from_index
-          Sunspot.remove(self) if indexable?
+          Sunspot.remove(self) 
         end
 
         # 
@@ -374,7 +374,7 @@ module Sunspot #:nodoc:
         # #remove_from_index
         #
         def solr_remove_from_index!
-          Sunspot.remove!(self) if indexable?
+          Sunspot.remove!(self) 
         end
 
         def solr_more_like_this(*args, &block)
