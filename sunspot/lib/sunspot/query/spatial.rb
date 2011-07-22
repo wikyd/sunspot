@@ -6,7 +6,7 @@ module Sunspot
       end
 
       def to_params
-        params = {:sfield => @field.indexed_name, :fq => "{!geofilt}", :pt => "#{@lat},#{@lon}", :sort => "geodist() asc"}
+        params = {:sfield => @field.indexed_name, :fq => "{!geofilt}", :pt => "#{@lat},#{@lon}"}
         params[:d] = @options[:radius] if @options[:radius]
         params
       end
