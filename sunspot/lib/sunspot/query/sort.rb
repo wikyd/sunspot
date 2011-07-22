@@ -90,6 +90,16 @@ module Sunspot
           "score #{direction_for_solr}"
         end
       end
+      
+      # 
+      # A GeodistSort sorts by geographical distance from pt specified in
+      # spatial query. 
+      #
+      class GeodistSort < Abstract
+        def to_param
+          "geodist() #{direction_for_solr}"
+        end
+      end
     end
   end
 end
