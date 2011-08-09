@@ -234,8 +234,12 @@ module Sunspot #:nodoc:
             counter = 0
             find_in_batches(:include => options[:include], :batch_size => options[:batch_size]) do |records|
               solr_benchmark options[:batch_size], counter do
-                records = records.select{ |r| r.indexable? }
-                Sunspot.index(records)
+                begin
+                  records = records.select{ |r| r.indexable? }
+                  Sunspot.index(records)
+                rescue => e
+                  logger.error "Sunspot Error: #{e}"
+                end
               end
               Sunspot.commit if options[:batch_commit]
               counter += 1
